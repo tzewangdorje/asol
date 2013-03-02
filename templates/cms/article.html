@@ -1,0 +1,82 @@
+{% extends "cms/base.html" %}
+
+{% block col-left %}
+<div class="panel section"><h4>Recent Stories</span></h4></div>
+      <!-- Adur Festival 2013-->
+      <div class="panel">
+    <h5><a href="#"><span class="title radius label">Adur Festival 2013</span></a><span class="right radius success label">Feb 1st 2013</span></h5>
+    <div class="content">
+      <a href="#" class="th"><img class="left" src="{{ STATIC_URL }}images/content/adur-festival-2013-thumb.jpg" /></a>
+      <p>The Adur Festival 2013 will run from 31st May to 16th June. We are in the process of planning a lantern making workshop as part of the festival.</p>
+      <div class="types"><i class="gen-enclosed foundicon-globe"></i><span class="radius secondary label">External link</span></div>
+    </div>
+      </div>
+      
+      <!--Getting creative-->
+      <div class="panel">
+    <h5><a href="#"><span class="title radius label">Getting creative</span></a><span class="right radius success label">Jan 25th 2013</span></h5>
+    <div class="content">
+      <a href="#" class="th"><img class="left" src="{{ STATIC_URL }}images/content/glow-sticks-thumb.jpg" /></a>
+      <p>We spent some time recently playing with finger torches to seeing how they might work to light up our lanterns. Boy are they bright!</p>
+      <p>Read all about our various experiments here. We have made a short film and included some pictures of the various designs.</p>
+      <div class="types"><i class="gen-enclosed foundicon-photo"></i><span class="radius secondary label">Photo</span></div>
+    </div>
+      </div>
+      
+      <!--Original Idea-->
+      <div class="youtube panel">
+    <h5><a href="#"><span class="title radius label">The Original Idea</span></a><span class="right radius success label">Jan 4th 2013</span></h5>
+    <div class="flex-video">
+        <iframe width="290" height="163" src="http://www.youtube.com/embed/GYo3E7YTR24" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <p>A lot of the ideas have changed since we published this short presentation, but it's here for posterity's sake!</p>
+    <div class="types"><i class="social foundicon-youtube"></i><span class="radius secondary label">Youtube</span></div>
+      </div>
+      
+      <div class="panel">
+    <h5><a href="#"><span class="title radius label">This is a regular panel</span></a><span class="right radius success label">Jan 1st 1970</span></h5>
+    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+      </div>
+      <div class="panel">
+    <h5><a href="#"><span class="title radius label">This is a regular panel</span></a><span class="right radius success label">Jan 1st 1970</span></h5>
+    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+</div>
+{% endblock col-left %}
+
+{% block main %}
+  <h3>Same Sky Quote For Grand Finale</h3>
+  <div class="date"><span class="right radius secondary label">Feb 10th 2013</span></div>
+  <h4 class="subheader">Once funding has been secured, then tickets are set to go on sale around the Adur district.</h4>
+  <img class="main" src="{{ STATIC_URL }}images/content/workshop.jpg" alt="spring-workshops-a-huge-success" />
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce turpis magna, placerat non dapibus nec, porttitor a nunc. Donec consectetur pharetra rutrum. Praesent ipsum urna, egestas tristique tincidunt eget, vestibulum in sapien.</p>
+  <p>Phasellus dapibus elementum mi, ut condimentum tortor eleifend ac. Morbi varius molestie elit ac porta. Maecenas at accumsan erat. Pellentesque ut rutrum quam. Morbi tincidunt, neque eu bibendum vehicula, mi nibh molestie purus, sit amet dapibus neque mauris vitae lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut eget rhoncus diam. Sed eget lacus urna. Fusce non lorem sit amet massa volutpat ultrices vitae eget arcu. Cras porttitor ultrices eros, a sodales nisl pellentesque a. Praesent velit erat, auctor quis egestas ut, ultrices eu leo. Etiam placerat sapien id tellus lacinia semper. Morbi lobortis pulvinar pulvinar.</p>
+  <p>Curabitur sit amet enim arcu. In eget ante non risus malesuada aliquam vel quis ligula. Aliquam congue varius leo, sed egestas diam luctus eget. Vivamus rhoncus pretium dui, nec auctor lacus tincidunt quis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut at mi tortor. Ut ultrices dui vel purus ultrices ac ornare ipsum tempus. Nullam pulvinar justo eget felis pharetra iaculis ac in lectus.</p>
+{% endblock %}
+
+{% block col-right %}
+	<div class="panel section"><h4>Our Partners</span></h4></div>
+	{% for partner in partners %}
+	<div class="partner panel radius">
+	  <h5><span class="title radius label">{{ partner.name }}</span></h5>
+	  <div class="row">
+	    <div class="seven columns">
+	      <a href="#" class="th"><img src="{{ STATIC_URL }}images/partners/{{ partner.logo_url }}" /></a>
+	    </div>		
+	    <div class="five columns">
+	      <dl class="vertical tabs">
+	        <dd>
+	          <i class="gen-enclosed foundicon-idea"></i>
+	          <a href="{{ partner.info_url }}"><span class="radius secondary label">More info</span></a>
+	        </dd>
+	        {% for media in partner.medias.all %}
+	          <dd>
+	            <i class="gen-enclosed foundicon-idea"></i>
+	            <a href="{{ media.link }}"><span class="radius secondary label">{{ media.media_type|title }}</span></a>
+	          </dd>
+	        {% endfor %}
+	      </dl>
+	    </div>
+	  </div>
+	</div><!--lancing regeneration-->
+	{% endfor %}
+{% endblock %}

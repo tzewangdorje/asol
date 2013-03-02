@@ -1,0 +1,1 @@
+[{"pk": 1, "model": "cms.media", "fields": {"partner": 1, "link": "lr@gmail.com", "media_type": "email"}}, {"pk": 2, "model": "cms.media", "fields": {"partner": 1, "link": "01903776655", "media_type": "phone"}}, {"pk": 3, "model": "cms.media", "fields": {"partner": 1, "link": "https://www.facebook.com/pages/Lancing-Regeneration/290228201011", "media_type": "facebook"}}]

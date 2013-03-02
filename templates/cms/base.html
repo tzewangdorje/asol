@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Adur Sea of Lights</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/general_enclosed_foundicons.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/social_foundicons.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/foundation.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/app.css">
+  <!--[if lt IE 8]>
+    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/general_enclosed_foundicons_ie7.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/social_foundicons_ie7.css">
+  <![endif]-->
+  <script src="{{ STATIC_URL }}javascripts/modernizr.foundation.js"></script>
+</head>
+<body>
+  
+
+	  
+  <div id="container">
+<div class="contain-to-grid sticky fixed">
+	  <nav class="top-bar">
+	    <ul>
+	      <!-- Title Area -->
+	      <li class="name">
+		<h1>
+		  <a href="/">Adur Sea of Lights Menu</a>
+		</h1>
+	      </li>
+	      <li class="toggle-topbar"><a href="#"></a></li>
+	    </ul>
+
+	<section>
+	  <!-- Left Nav Section -->
+	  <ul class="left">
+	    <li class="divider"></li>
+	    <li class="has-dropdown">
+	      <a class="active" href="#">Menu</a>
+	      <ul class="dropdown">
+		<li><label>For Younger People</label></li>
+		<li class="has-dropdown">
+		  <a href="#" class="">&quot;How tos&quot;, see more</a>
+		  <ul class="dropdown">
+		    <li><a href="#">Willow &amp; tissue paper</a></li>
+		    <li><a href="#">Recycled lantern</a></li>
+		    <li><a href="#">Another idea</a></li>
+		    <li><a href="#">And one more</a></li>
+		  </ul>
+		</li>
+		<li><a href="#">Your artwork</a></li>
+		<li><a href="#">&quot;The Light Upon the Sea&quot;</a></li>
+		<li class="divider"></li>
+		<li><label>For Grown-Ups</label></li>
+		<li><a href="#">So what is Adur Sea of Lights?</a></li>
+		<li><a href="#">Legal Information</a></li>
+		<li><a href="#">Financial Information</a></li>
+	      </ul>
+	    </li>
+	    <li class="divider hide-for-small"></li>
+	  </ul>
+
+	  <!-- Right Nav Section -->
+	  <ul class="right">
+	    <li class="divider show-for-medium-and-up"></li>
+	    <li class="has-dropdown">
+	      <a href="#">Our Partners</a>
+	      <ul class="dropdown">
+		<li><label>Businesses</label></li>
+		<li><a href="#" class="">Amanda Marie Designs, LLC</a></li>
+		<li><a href="#">Active8</a></li>
+		<li><a href="#">Wot A Mess</a></li>
+		<li><a href="#">Banana Pancakes</a></li>
+		<li><a href="#">The Wool Bar</a></li>
+		<li class="divider"></li>
+		<li><label>Community Groups</label></li>
+		<li><a href="#">Lancing Regeneration</a></li>
+		<li><a href="#">The Girl Guides</a></li>
+	      </ul>
+	    </li>
+	  </ul>
+	</section>
+      </nav>
+      
+  </div>
+    <div id="sea-background">
+      <div id="row-top-wrap">
+	<div id="row-top" class="row">
+	
+	</div><!--top-->      
+      </div><!--top-wrap-->
+      <div id="row-banner" class="row">
+	<div class="twelve columns">
+	  <img src="{{ STATIC_URL }}images/sea-of-lights-colour-small.png" alt="The Adur Sea of Lights" />
+	</div>
+      </div><!--banner-->
+      
+      <div id="row-split-wrap">
+	<div id="row-split" class="row">
+	
+	</div><!--split-->
+      </div><!--split-wrap-->
+      
+      <div id="row-bottom-wrap">
+	<div id="row-bottom" class="row">
+	  <div id="page">
+	  
+	    <!-- Left column -->
+	    <div id="col-left" class="four columns">
+        {% block col-left %}{% endblock %}
+	    </div>
+	    
+	    <!-- Middle column -->
+	    <div id="main" class="four columns">
+        {% block main %}{% endblock %}
+	    </div>
+	    
+	    <!-- Right column -->
+	    <div id="col-right" class="four columns">
+	      <div id="mailshot" class="panel callout radius">
+		<h5>Why not join our mailing list?</h5>
+		  <form action="" method="POST">
+		  <div class="row collapse">
+		  <div class="nine columns">
+		    <input type="text" name="email" class="has-tip" data-width="300" title="Enter your email address here & then press &#39;Join&#39;" />
+		  </div>
+		  <div class="three columns">
+		    <input type="submit" value="Join" class="button expand postfix"/>
+		  </div>	
+		  </div>
+		  </form>
+	      </div>
+            {% block col-right %}{% endblock %}
+	    </div>      
+	  </div>
+	</div><!--bottom-->
+      </div><!--bottom-wrap-->
+      
+    </div>   
+  </div><!--container-->
+
+  
+  <!-- Included JS Files (Uncompressed) -->
+  <!--
+  <script src="{{ STATIC_URL }}javascripts/jquery.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.mediaQueryToggle.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.forms.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.reveal.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.orbit.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.navigation.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.buttons.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.tabs.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.tooltips.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.accordion.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.placeholder.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.alerts.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.topbar.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.joyride.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.clearing.js"></script><script src="{{ STATIC_URL }}javascripts/jquery.foundation.magellan.js"></script>
+  -->
+  
+  <!-- Included JS Files (Compressed) -->
+  <script src="{{ STATIC_URL }}javascripts/jquery.js"></script>
+  <script src="{{ STATIC_URL }}javascripts/foundation.min.js"></script>
+  
+  <!-- Initialize JS Plugins -->
+  <script src="{{ STATIC_URL }}javascripts/app.js"></script>
+
+  
+    <script>
+    $(window).load(function(){
+      $("#featured").orbit();
+    });
+    </script> 
+  
+</body>
+</html>
