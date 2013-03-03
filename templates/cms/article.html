@@ -44,13 +44,13 @@
 {% endblock col-left %}
 
 {% block main %}
-  <h3>Same Sky Quote For Grand Finale</h3>
-  <div class="date"><span class="right radius secondary label">Feb 10th 2013</span></div>
-  <h4 class="subheader">Once funding has been secured, then tickets are set to go on sale around the Adur district.</h4>
+  <h3>{{ article.title }}</h3>
+  <div class="date"><span class="right radius secondary label">{{ article.date_published }}</span></div>
+  <h4 class="subheader">{{ article.summary }}</h4>
   <img class="main" src="{{ STATIC_URL }}images/content/workshop.jpg" alt="spring-workshops-a-huge-success" />
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce turpis magna, placerat non dapibus nec, porttitor a nunc. Donec consectetur pharetra rutrum. Praesent ipsum urna, egestas tristique tincidunt eget, vestibulum in sapien.</p>
-  <p>Phasellus dapibus elementum mi, ut condimentum tortor eleifend ac. Morbi varius molestie elit ac porta. Maecenas at accumsan erat. Pellentesque ut rutrum quam. Morbi tincidunt, neque eu bibendum vehicula, mi nibh molestie purus, sit amet dapibus neque mauris vitae lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut eget rhoncus diam. Sed eget lacus urna. Fusce non lorem sit amet massa volutpat ultrices vitae eget arcu. Cras porttitor ultrices eros, a sodales nisl pellentesque a. Praesent velit erat, auctor quis egestas ut, ultrices eu leo. Etiam placerat sapien id tellus lacinia semper. Morbi lobortis pulvinar pulvinar.</p>
-  <p>Curabitur sit amet enim arcu. In eget ante non risus malesuada aliquam vel quis ligula. Aliquam congue varius leo, sed egestas diam luctus eget. Vivamus rhoncus pretium dui, nec auctor lacus tincidunt quis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut at mi tortor. Ut ultrices dui vel purus ultrices ac ornare ipsum tempus. Nullam pulvinar justo eget felis pharetra iaculis ac in lectus.</p>
+  {% autoescape off %}
+  	{{ article.articletext.body }}
+  {% endautoescape %}
 {% endblock %}
 
 {% block col-right %}
