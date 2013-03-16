@@ -76,7 +76,8 @@ h3 {
 div#main h3 {
   margin-top: 0px;
 }
-h4.subheader {line-height: 1; font-size: 21px;}
+h4.subheader {line-height: 1; font-size: 18px;}
+div.date {text-align: right;}
 
 div#container {
   background-image:url("/static/images/top-slice.png");

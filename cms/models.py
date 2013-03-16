@@ -24,10 +24,17 @@ class Article(models.Model):
     article_type =  models.CharField(max_length=16)
     summary =  models.CharField(max_length=256)
     image_thumb_url =  models.CharField(max_length=128)
+    
+    def makeUrl(self):
+        if self.article_type=='link':
+            return self.articlelink.link_url
+        else:
+            return "/content/"+self.title_url
 
 class ArticleText(Article):
     body = models.CharField(max_length=2048)
     image_body_url = models.CharField(max_length=128)
+    image_alt_text = models.CharField(max_length=128)
 
 class ArticleYoutube(Article):
     video_url =  models.CharField(max_length=128)

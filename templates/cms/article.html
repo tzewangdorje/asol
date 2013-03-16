@@ -1,53 +1,45 @@
 {% extends "cms/base.html" %}
 
+{% load cms_extras %}
+
 {% block col-left %}
-<div class="panel section"><h4>Recent Stories</span></h4></div>
-      <!-- Adur Festival 2013-->
-      <div class="panel">
-    <h5><a href="#"><span class="title radius label">Adur Festival 2013</span></a><span class="right radius success label">Feb 1st 2013</span></h5>
-    <div class="content">
-      <a href="#" class="th"><img class="left" src="{{ STATIC_URL }}images/content/adur-festival-2013-thumb.jpg" /></a>
-      <p>The Adur Festival 2013 will run from 31st May to 16th June. We are in the process of planning a lantern making workshop as part of the festival.</p>
-      <div class="types"><i class="gen-enclosed foundicon-globe"></i><span class="radius secondary label">External link</span></div>
-    </div>
-      </div>
-      
-      <!--Getting creative-->
-      <div class="panel">
-    <h5><a href="#"><span class="title radius label">Getting creative</span></a><span class="right radius success label">Jan 25th 2013</span></h5>
-    <div class="content">
-      <a href="#" class="th"><img class="left" src="{{ STATIC_URL }}images/content/glow-sticks-thumb.jpg" /></a>
-      <p>We spent some time recently playing with finger torches to seeing how they might work to light up our lanterns. Boy are they bright!</p>
-      <p>Read all about our various experiments here. We have made a short film and included some pictures of the various designs.</p>
-      <div class="types"><i class="gen-enclosed foundicon-photo"></i><span class="radius secondary label">Photo</span></div>
-    </div>
-      </div>
-      
-      <!--Original Idea-->
-      <div class="youtube panel">
-    <h5><a href="#"><span class="title radius label">The Original Idea</span></a><span class="right radius success label">Jan 4th 2013</span></h5>
-    <div class="flex-video">
-        <iframe width="290" height="163" src="http://www.youtube.com/embed/GYo3E7YTR24" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <p>A lot of the ideas have changed since we published this short presentation, but it's here for posterity's sake!</p>
-    <div class="types"><i class="social foundicon-youtube"></i><span class="radius secondary label">Youtube</span></div>
-      </div>
-      
-      <div class="panel">
-    <h5><a href="#"><span class="title radius label">This is a regular panel</span></a><span class="right radius success label">Jan 1st 1970</span></h5>
-    <p>It has an easy to override visual style, and is appropriately subdued.</p>
-      </div>
-      <div class="panel">
-    <h5><a href="#"><span class="title radius label">This is a regular panel</span></a><span class="right radius success label">Jan 1st 1970</span></h5>
-    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+<div class="panel section">
+	<h4>Recent Stories</span></h4>
 </div>
+	{% for story in recentStories %}
+      <!-- {{ story.title }} -->
+      <div class="panel">
+    	<h5><a href="{{ story|makeUrl }}"><span class="title radius label">{{ story.title }}</span></a><span class="right radius success label">{{ story.date_published|date:"M jS Y" }}</span></h5>
+    	<div class="content">
+    		{% if story.article_type == "youtube" %}
+	    		<div class="flex-video">
+	        		<iframe width="290" height="163" src="{{ story.articleyoutube.video_url }}" frameborder="0" allowfullscreen></iframe>
+	    		</div>
+    		{% else %}
+	      		<a href="{{ story|makeUrl }}" class="th"><img class="left" src="{{ STATIC_URL }}images/content/{{ story.image_thumb_url }}" /></a>
+      		{% endif %}
+      		<p>{{ story.summary }}</p>
+      		<div class="types">
+			{% if story.article_type == "text" %}
+			    <i class="gen-enclosed foundicon-page"></i><span class="radius secondary label">Full article</span>
+			{% elif story.article_type == "link" %}
+			    <i class="gen-enclosed foundicon-globe"></i><span class="radius secondary label">External link</span>
+			{% elif story.article_type == "photo" %}
+				<i class="gen-enclosed foundicon-photo"></i><span class="radius secondary label">Photo</span>
+			{% elif story.article_type == "youtube" %}
+				<i class="gen-enclosed foundicon-youtube"></i><span class="radius secondary label">Youtube</span>
+			{% endif %}
+      		</div>
+    	</div>
+      </div>
+	{% endfor %}
 {% endblock col-left %}
 
 {% block main %}
   <h3>{{ article.title }}</h3>
-  <div class="date"><span class="right radius secondary label">{{ article.date_published }}</span></div>
+  <div class="date"><span class="radius secondary label">{{ article.date_published }}</span></div>
   <h4 class="subheader">{{ article.summary }}</h4>
-  <img class="main" src="{{ STATIC_URL }}images/content/workshop.jpg" alt="spring-workshops-a-huge-success" />
+  <img class="main" src="{{ STATIC_URL }}images/content/{{ article.articletext.image_body_url }}" alt="{{ article.articletext.image_alt_text }}" />
   {% autoescape off %}
   	{{ article.articletext.body }}
   {% endautoescape %}
