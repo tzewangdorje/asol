@@ -1,0 +1,11 @@
+{% extends "cms/article.html" %}
+
+{% block main %}
+  <h3>{{ article.title }}</h3>
+  <div class="date"><span class="radius secondary label">{{ article.date_published }}</span></div>
+  <h4 class="subheader">{{ article.summary }}</h4>
+  <img class="main" src="{{ STATIC_URL }}images/content/{{ article.articletext.image_body_url }}" alt="{{ article.articletext.image_alt_text }}" />
+  {% autoescape off %}
+  	{{ article.articletext.body }}
+  {% endautoescape %}
+{% endblock %}	

@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/social_foundicons_ie7.css">
   <![endif]-->
   <script src="{{ STATIC_URL }}javascripts/modernizr.foundation.js"></script>
+  <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+  <script type="text/javascript">stLight.options({publisher: "f0b472c2-dcbc-4135-9377-c8f6744f66e9", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
 </head>
 <body>
   
@@ -119,7 +121,12 @@
 	    
 	    <!-- Middle column -->
 	    <div id="main" class="four columns">
-        {% block main %}{% endblock %}
+	        {% block main %}{% endblock %}
+	        <span class='st_facebook_large' displayText='Facebook'></span>
+			<span class='st_twitter_large' displayText='Tweet'></span>
+			<span class='st_googleplus_large' displayText='Google +'></span>
+			<span class='st_pinterest_large' displayText='Pinterest'></span>
+			<span class='st_fblike_large' displayText='Facebook Like'></span>
 	    </div>
 	    
 	    <!-- Right column -->
@@ -162,7 +169,11 @@
   
     <script>
     $(window).load(function(){
-      $("#featured").orbit();
+      $("#gallery").orbit({ 
+      	fluid: '5x9', 
+      	'advanceSpeed': 10000, 
+      	'pauseOnHover': true 
+      });
     });
     </script> 
   

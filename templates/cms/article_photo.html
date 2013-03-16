@@ -1,0 +1,17 @@
+{% extends "cms/article.html" %}
+
+{% block main %}
+
+	<div id="gallery">
+		{% for photoStory in photoStories %}
+		<div>
+			<h3>{{ photoStory.title }}</h3>
+			<div class="date"><span class="radius secondary label">{{ photoStory.date_published|date:"M jS Y" }}</span></div>
+			<br/>
+			<img class="main" src="{{ STATIC_URL }}images/content/{{ photoStory.articlephoto.photo_url }}" alt="{{ photoStory.articlephoto.caption }}" />
+			<h4 class="subheader">{{ photoStory.summary }}</h4>
+		</div>
+		{% endfor %}
+	</div>
+	
+{% endblock %}	
