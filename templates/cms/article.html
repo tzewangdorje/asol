@@ -6,10 +6,10 @@
 <div class="panel section">
 	<h4>Recent Stories</span></h4>
 </div>
-	{% for story in recentStories %}
+	{% for story in recentStories|slice:":3" %}
       <!-- {{ story.title }} -->
       <div class="panel">
-    	<h5><a href="{{ story|makeUrl }}"><span class="title radius label">{{ story.title }}</span></a><span class="right radius success label">{{ story.date_published|date:"M jS Y" }}</span></h5>
+    	<h5><a href="{{ story|makeUrl }}"><span class="title radius label">{{ story.title }}</span></a><span class="radius success label">{{ story.date_published|date:"M jS Y" }}</span></h5>
     	<div class="content">
     		{% if story.article_type == "youtube" %}
 	    		<div class="flex-video">
@@ -32,15 +32,15 @@
       		</div>
     	</div>
       </div>
+      
 	{% endfor %}
 {% endblock col-left %}
 
 {% block main %}{% endblock %}
-
 	
 {% block col-right %}
 	<div class="panel section"><h4>Our Partners</span></h4></div>
-	{% for partner in partners %}
+	{% for partner in partners|slice:":3" %}
 	<div class="partner panel radius">
 	  <h5><span class="title radius label">{{ partner.name }}</span></h5>
 	  <div class="row">

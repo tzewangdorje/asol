@@ -21,7 +21,7 @@
   <![endif]-->
   <script src="{{ STATIC_URL }}javascripts/modernizr.foundation.js"></script>
   <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-  <script type="text/javascript">stLight.options({publisher: "f0b472c2-dcbc-4135-9377-c8f6744f66e9", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
+  <script type="text/javascript">stLight.options({publisher: "f0b472c2-dcbc-4135-9377-c8f6744f66e9", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
 </head>
 <body>
   
@@ -47,23 +47,16 @@
 	    <li class="has-dropdown">
 	      <a class="active" href="#">Menu</a>
 	      <ul class="dropdown">
-		<li><label>For Younger People</label></li>
-		<li class="has-dropdown">
-		  <a href="#" class="">&quot;How tos&quot;, see more</a>
-		  <ul class="dropdown">
-		    <li><a href="#">Willow &amp; tissue paper</a></li>
-		    <li><a href="#">Recycled lantern</a></li>
-		    <li><a href="#">Another idea</a></li>
-		    <li><a href="#">And one more</a></li>
-		  </ul>
-		</li>
-		<li><a href="#">Your artwork</a></li>
-		<li><a href="#">&quot;The Light Upon the Sea&quot;</a></li>
-		<li class="divider"></li>
-		<li><label>For Grown-Ups</label></li>
-		<li><a href="#">So what is Adur Sea of Lights?</a></li>
-		<li><a href="#">Legal Information</a></li>
-		<li><a href="#">Financial Information</a></li>
+		    <li><label>ABOUT</label></li>
+		    <li><a href="/content/the-light-upon-the-sea">&quot;The Light Upon the Sea&quot;</a></li>
+		    <li><a href="/content/what-is-the-adur-sea-of-lights">So what is the Adur Sea of Lights?</a></li>
+		    <li><label>HOW TOS</label></li>
+		    <li><a href="#">...coming soon</a></li>
+		    <li><label>RECENT STORIES</label></li>
+		    {% load cms_extras %}
+		    {% for story in recentStories %}
+		    	<li><a href="{{ story|makeUrl }}">{{ story.title }}</a></li>
+		    {% endfor %}
 	      </ul>
 	    </li>
 	    <li class="divider hide-for-small"></li>
@@ -75,16 +68,9 @@
 	    <li class="has-dropdown">
 	      <a href="#">Our Partners</a>
 	      <ul class="dropdown">
-		<li><label>Businesses</label></li>
-		<li><a href="#" class="">Amanda Marie Designs, LLC</a></li>
-		<li><a href="#">Active8</a></li>
-		<li><a href="#">Wot A Mess</a></li>
-		<li><a href="#">Banana Pancakes</a></li>
-		<li><a href="#">The Wool Bar</a></li>
-		<li class="divider"></li>
-		<li><label>Community Groups</label></li>
-		<li><a href="#">Lancing Regeneration</a></li>
-		<li><a href="#">The Girl Guides</a></li>
+	      {% for partner in partners %}
+	      	<li><a href="/content/{{ partner.name|slugify }}">{{ partner.name }}</a></li>
+	      {% endfor %}
 	      </ul>
 	    </li>
 	  </ul>
@@ -100,7 +86,9 @@
       </div><!--top-wrap-->
       <div id="row-banner" class="row">
 	<div class="twelve columns">
-	  <img src="{{ STATIC_URL }}images/sea-of-lights-colour-small.png" alt="The Adur Sea of Lights" />
+		<a href="/">
+		  <img src="{{ STATIC_URL }}images/sea-of-lights-colour-small.png" alt="The Adur Sea of Lights" />
+		</a>
 	</div>
       </div><!--banner-->
       
@@ -116,17 +104,12 @@
 	  
 	    <!-- Left column -->
 	    <div id="col-left" class="four columns">
-        {% block col-left %}{% endblock %}
+        	{% block col-left %}{% endblock %}
 	    </div>
 	    
 	    <!-- Middle column -->
 	    <div id="main" class="four columns">
 	        {% block main %}{% endblock %}
-	        <span class='st_facebook_large' displayText='Facebook'></span>
-			<span class='st_twitter_large' displayText='Tweet'></span>
-			<span class='st_googleplus_large' displayText='Google +'></span>
-			<span class='st_pinterest_large' displayText='Pinterest'></span>
-			<span class='st_fblike_large' displayText='Facebook Like'></span>
 	    </div>
 	    
 	    <!-- Right column -->

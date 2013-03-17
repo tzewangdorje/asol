@@ -7,7 +7,11 @@
 		<div>
 			<h3>{{ photoStory.title }}</h3>
 			<div class="date"><span class="radius secondary label">{{ photoStory.date_published|date:"M jS Y" }}</span></div>
-			<br/>
+	        <span class='st_facebook_large' displayText='Facebook'></span>
+			<span class='st_twitter_large' displayText='Tweet'></span>
+			<span class='st_googleplus_large' displayText='Google +'></span>
+			<span class='st_pinterest_large' displayText='Pinterest'></span>
+			<span class='st_fblike_large' displayText='Facebook Like'></span>
 			<img class="main" src="{{ STATIC_URL }}images/content/{{ photoStory.articlephoto.photo_url }}" alt="{{ photoStory.articlephoto.caption }}" />
 			<h4 class="subheader">{{ photoStory.summary }}</h4>
 		</div>

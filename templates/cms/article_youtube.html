@@ -2,7 +2,12 @@
 
 {% block main %}
   <h3>{{ article.title }}</h3>
-  <div class="date"><span class="radius secondary label">{{ article.date_published }}</span></div>
+  <div class="date"><span class="radius secondary label">{{ article.date_published|date:"M jS Y" }}</span></div>
+    <span class='st_facebook_large' displayText='Facebook'></span>
+	<span class='st_twitter_large' displayText='Tweet'></span>
+	<span class='st_googleplus_large' displayText='Google +'></span>
+	<span class='st_pinterest_large' displayText='Pinterest'></span>
+	<span class='st_fblike_large' displayText='Facebook Like'></span>
   <h4 class="subheader">{{ article.summary }}</h4>
 <div class="flex-video">
   		<iframe width="366px" height="206px"  src="{{ article.articleyoutube.video_url }}" frameborder="0" allowfullscreen></iframe>
