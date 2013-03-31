@@ -59,6 +59,9 @@ p {
 div#main p {
   font-size: 14px;  
 }
+div#main ul {
+	margin-left: 20px;
+}
 img.main {
     width: 100%;
     margin-bottom: 20px;
@@ -75,6 +78,12 @@ h3 {
 }
 div#main h3 {
   margin-top: 0px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	padding: 10px;  
 }
 h4.subheader {line-height: 1; font-size: 18px;}
 div.date {text-align: right;}
@@ -172,11 +181,23 @@ div.panel div.content img {
   margin-right: 10px;
   margin-bottom: 5px;
 }
+div.panel h5 {
+	background-color: #2ba6cb;
+	color: white;
+	padding: 10px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+}
 div.panel h5 span.title {
   font-size: inherit !important;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-right: 5px;
+  color: white;
+}
+div.panel h5 span.date {
+	float: right;
+	margin-left: 10px;
 }
 div.partner dl * {
   font-size: 16px;
@@ -219,20 +240,32 @@ div.partner .tabs.vertical dd {
 div.youtube iframe {
   padding-bottom: 10px;
 }
-div#mailshot h5 {
+div#signup h5#calltoaction {
   color: white;
+  padding: 0;
+  margin: 0;
 }
-div#mailshot input.button {
-  background-color: #66cc33;
-  border: 1px solid #505050;
-  color: white;
+div#signup div.four {
+	height: 100%;
+}
+div#signup a.large.button {
+	height: 100%;
+	display: block;
 }
 div.panel.section {
-  background-color: #555555;
-  padding: 3px 20px;
+	padding: 0 !important;
+	border: none !important;
 }
 div.panel.section h4 {
   color: white;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+-ms-border-radius: 3px;
+-o-border-radius: 3px;
+border-radius: 3px;
+background-color: #555555;
+width: 100%;
+padding: 10px;
 }
 .label {
     white-space: normal;

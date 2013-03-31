@@ -7,6 +7,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'cms.views.home', name='home'),
+    url(r'^gallery$', 'cms.views.gallery', name='gallery'),
+    url(r'^ajaxLoadStories/(?P<title_url>[A-Za-z0-9\-]+)/(?P<page>[0-9]+)$', 'cms.views.ajaxLoadStories', name='ajaxLoadStories'),
     url(r'^content/', include('cms.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

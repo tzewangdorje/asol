@@ -1,0 +1,42 @@
+{% extends "cms/base.html" %}
+
+{% load cms_extras %}
+
+{% block col-left %}
+	<div class="panel section">
+		<h4>Our Gallery</span></h4>
+	</div>
+	{% for photo in colOne %}
+		<a href="#" data-reveal-id="gallery-{{ photo.id }}">
+			<img class="main" src="{{ STATIC_URL }}images/content/{{ photo.articlephoto.photo_url }}" alt="{{ photo.articlephoto.caption }}" />
+		</a>
+	{% endfor %}
+{% endblock col-left %}
+
+{% block main %}
+	{% for photo in colTwo %}
+		<a href="#" data-reveal-id="gallery-{{ photo.id }}">
+			<img class="main" src="{{ STATIC_URL }}images/content/{{ photo.articlephoto.photo_url }}" alt="{{ photo.articlephoto.caption }}" />
+		</a>
+	{% endfor %}
+{% endblock %}
+	
+{% block col-right %}
+	{% for photo in colThree %}
+		<a href="#" data-reveal-id="gallery-{{ photo.id }}">
+			<img class="main" src="{{ STATIC_URL }}images/content/{{ photo.articlephoto.photo_url }}" alt="{{ photo.articlephoto.caption }}" />
+		</a>
+	{% endfor %}
+{% endblock %}
+
+{% block gallery %}
+	{% for photoStory in photoStories %}
+		<div id="gallery-{{ photoStory.id }}" class="reveal-modal">
+		  <h2>{{ photoStory.title }}</h2>
+		  <p class="lead">{{ photoStory.summary }}</p>
+		  <img class="main" src="{{ STATIC_URL }}images/content/{{ photoStory.articlephoto.photo_url }}" alt="{{ photoStory.articlephoto.caption }}" />
+		  <a class="close-reveal-modal">&#215;</a>
+		</div>
+	{% endfor %}
+{% endblock %}
+

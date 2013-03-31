@@ -33,7 +33,7 @@ class Article(models.Model):
             return "/content/"+self.title_url
 
 class ArticleText(Article):
-    body = models.CharField(max_length=2048)
+    body = models.CharField(max_length=3000)
     image_body_url = models.CharField(max_length=128, null=True, blank=True)
     image_alt_text = models.CharField(max_length=128, null=True, blank=True)
 

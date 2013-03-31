@@ -6,34 +6,44 @@
 <div class="panel section">
 	<h4>Recent Stories</span></h4>
 </div>
-	{% for story in recentStories|slice:":3" %}
+	{% for story in recentStories %}
       <!-- {{ story.title }} -->
       <div class="panel">
-    	<h5><a href="{{ story|makeUrl }}"><span class="title radius label">{{ story.title }}</span></a><span class="radius success label">{{ story.date_published|date:"M jS Y" }}</span></h5>
+    	<h5 class="radius">
+    		<span class="date radius success label">{{ story.date_published|date:"M jS Y" }}</span>
+    		<a href="{{ story|makeUrl }}">
+    			<span class="title">{{ story.title }}</span>
+    		</a>
+    	</h5>
     	<div class="content">
     		{% if story.article_type == "youtube" %}
 	    		<div class="flex-video">
 	        		<iframe width="290" height="163" src="{{ story.articleyoutube.video_url }}" frameborder="0" allowfullscreen></iframe>
 	    		</div>
     		{% else %}
-	      		<a href="{{ story|makeUrl }}" class="th"><img class="left" src="{{ STATIC_URL }}images/content/{{ story.image_thumb_url }}" /></a>
+	      		<a {% if story.article_type == "link" %}target="_blank" {% endif %}href="{{ story|makeUrl }}" class="th"><img class="left" src="{{ STATIC_URL }}images/content/{{ story.image_thumb_url }}" /></a>
       		{% endif %}
       		<p>{{ story.summary }}</p>
       		<div class="types">
-			{% if story.article_type == "text" %}
-			    <i class="gen-enclosed foundicon-page"></i><span class="radius secondary label">Full article</span>
-			{% elif story.article_type == "link" %}
-			    <i class="gen-enclosed foundicon-globe"></i><span class="radius secondary label">External link</span>
-			{% elif story.article_type == "photo" %}
-				<i class="gen-enclosed foundicon-photo"></i><span class="radius secondary label">Photo</span>
-			{% elif story.article_type == "youtube" %}
-				<i class="gen-enclosed foundicon-youtube"></i><span class="radius secondary label">Youtube</span>
-			{% endif %}
+      		<a {% if story.article_type == "link" %}target="_blank" {% endif %}href="{{ story|makeUrl }}">
+				{% if story.article_type == "text" %}
+				    <i class="gen-enclosed foundicon-page"></i><span class="radius secondary label">Full article</span>
+				{% elif story.article_type == "link" %}
+				    <i class="gen-enclosed foundicon-globe"></i><span class="radius secondary label">External link</span>
+				{% elif story.article_type == "photo" %}
+					<i class="gen-enclosed foundicon-photo"></i><span class="radius secondary label">Photo</span>
+				{% elif story.article_type == "youtube" %}
+					<i class="gen-enclosed foundicon-youtube"></i><span class="radius secondary label">Youtube</span>
+				{% endif %}
+			</a>
       		</div>
     	</div>
       </div>
-      
 	{% endfor %}
+	{% if page != None %}
+		<a id="readMore" href="/ajaxLoadStories/{{ article.title_url }}/{{ page }}" class="right small button radius">Load more stories</a>
+	{% endif %}
+   
 {% endblock col-left %}
 
 {% block main %}{% endblock %}
@@ -56,12 +66,28 @@
 	        {% for media in partner.medias.all %}
 	          <dd>
 	            <i class="gen-enclosed foundicon-idea"></i>
-	            <a href="{{ media.link }}"><span class="radius secondary label">{{ media.media_type|title }}</span></a>
+	            {% if media.media_type == "phone" %}
+	            	<a href="tel:{{ media.link|tel }}"><span class="radius secondary label">{{ media.media_type|title }}</span></a>
+	            {% else %}
+	            	<a target="_blank" href="{{ media.link }}"><span class="radius secondary label">{{ media.media_type|title }}</span></a>
+	            {% endif %}
 	          </dd>
 	        {% endfor %}
 	      </dl>
 	    </div>
 	  </div>
-	</div><!--lancing regeneration-->
+	</div>
+	{% endfor %}
+{% endblock %}
+
+{% block gallery %}
+	{% for photoStory in photoStories %}
+		<div id="gallery-{{ photoStory.id }}" class="reveal-modal">
+		  <h2>{{ photoStory.title }}</h2>
+		  <p class="lead">{{ photoStory.summary }}</p>
+		  <img class="main" src="{{ STATIC_URL }}images/content/{{ photoStory.articlephoto.photo_url }}" alt="{{ photoStory.articlephoto.caption }}" />
+		  <a href="/gallery" class="medium success button radius">Go to the gallery</a>
+		  <a class="close-reveal-modal">&#215;</a>
+		</div>
 	{% endfor %}
 {% endblock %}

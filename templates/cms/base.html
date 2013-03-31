@@ -47,15 +47,18 @@
 	    <li class="has-dropdown">
 	      <a class="active" href="#">Menu</a>
 	      <ul class="dropdown">
+	      	<li><a href="/">Home</a></li>
+	      	<li><a href="/gallery">Our Gallery</a></li>
 		    <li><label>ABOUT</label></li>
-		    <li><a href="/content/the-light-upon-the-sea">&quot;The Light Upon the Sea&quot;</a></li>
 		    <li><a href="/content/what-is-the-adur-sea-of-lights">So what is the Adur Sea of Lights?</a></li>
-		    <li><label>HOW TOS</label></li>
-		    <li><a href="#">...coming soon</a></li>
+		    <li><a href="/content/the-light-upon-the-sea">&quot;The Light Upon the Sea&quot;</a></li>
+		    <li><a href="/content/meet-the-team">Meet the Team</a></li>
 		    <li><label>RECENT STORIES</label></li>
 		    {% load cms_extras %}
 		    {% for story in recentStories %}
-		    	<li><a href="{{ story|makeUrl }}">{{ story.title }}</a></li>
+		    	{% if story.article_type != "link" %}
+		    		<li><a href="{{ story|makeUrl }}">{{ story.title }}</a></li>
+		    	{% endif %}
 		    {% endfor %}
 	      </ul>
 	    </li>
@@ -114,18 +117,15 @@
 	    
 	    <!-- Right column -->
 	    <div id="col-right" class="four columns">
-	      <div id="mailshot" class="panel callout radius">
-		<h5>Want to get involved?<br/>Then join our mailing list!</h5>
-		  <form action="" method="POST">
-		  <div class="row collapse">
-		  <div class="nine columns">
-		    <input type="text" name="email" class="has-tip" data-width="300" title="Enter your email address here & then press &#39;Join&#39;" />
-		  </div>
-		  <div class="three columns">
-		    <input type="submit" value="Join" class="button expand postfix"/>
-		  </div>	
-		  </div>
-		  </form>
+	      <div id="signup" class="panel callout radius">
+	      <div class="row collapse">
+	      	<div class="eight columns">
+	      		<h5 id="calltoaction">Want to get involved?<br/>Then join our forum!</h5>
+	      	</div>
+	      	<div class="four columns">
+	      		<a href="http://forum.seaoflights.co.uk" class="medium button round success">JOIN US</a>
+	      	</div>
+	      </div>
 	      </div>
             {% block col-right %}{% endblock %}
 	    </div>      
@@ -154,11 +154,22 @@
     $(window).load(function(){
       $("#gallery").orbit({ 
       	fluid: '5x9', 
-      	'advanceSpeed': 10000, 
-      	'pauseOnHover': true 
+      	'advanceSpeed': 4000, 
+      	'pauseOnHover': false, 
+      	'afterSlideChange': function() {
+      		
+      	},
       });
+		$("div#page").on("click", "#readMore", function(e){
+			e.preventDefault();
+			url = $(this).attr('href');
+			$("div#col-left").load(url);
+		});
     });
-    </script> 
-  
+    </script>
+     
+{% if article.article_type == "photo" or gallery == "True" %}
+	{% block gallery %}{% endblock %}
+{% endif %}  
 </body>
 </html>

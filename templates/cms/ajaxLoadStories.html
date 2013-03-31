@@ -1,0 +1,42 @@
+{% load cms_extras %}
+
+<div class="panel section">
+	<h4>Recent Stories</span></h4>
+</div>
+	{% for story in recentStories %}
+      <!-- {{ story.title }} -->
+      <div class="panel">
+    	<h5 class="radius">
+    		<span class="date radius success label">{{ story.date_published|date:"M jS Y" }}</span>
+    		<a href="{{ story|makeUrl }}">
+    			<span class="title">{{ story.title }}</span>
+    		</a>
+    	</h5>
+    	<div class="content">
+    		{% if story.article_type == "youtube" %}
+	    		<div class="flex-video">
+	        		<iframe width="290" height="163" src="{{ story.articleyoutube.video_url }}" frameborder="0" allowfullscreen></iframe>
+	    		</div>
+    		{% else %}
+	      		<a {% if story.article_type == "link" %}target="_blank" {% endif %}href="{{ story|makeUrl }}" class="th"><img class="left" src="{{ STATIC_URL }}images/content/{{ story.image_thumb_url }}" /></a>
+      		{% endif %}
+      		<p>{{ story.summary }}</p>
+      		<div class="types">
+      		<a {% if story.article_type == "link" %}target="_blank" {% endif %}href="{{ story|makeUrl }}">
+				{% if story.article_type == "text" %}
+				    <i class="gen-enclosed foundicon-page"></i><span class="radius secondary label">Full article</span>
+				{% elif story.article_type == "link" %}
+				    <i class="gen-enclosed foundicon-globe"></i><span class="radius secondary label">External link</span>
+				{% elif story.article_type == "photo" %}
+					<i class="gen-enclosed foundicon-photo"></i><span class="radius secondary label">Photo</span>
+				{% elif story.article_type == "youtube" %}
+					<i class="gen-enclosed foundicon-youtube"></i><span class="radius secondary label">Youtube</span>
+				{% endif %}
+			</a>
+      		</div>
+    	</div>
+      </div>
+	{% endfor %}
+	{% if page != None %}
+		<a id="readMore" href="/ajaxLoadStories/{{ title_url }}/{{ page }}" class="right small button radius">Load more stories</a>
+	{% endif %}
