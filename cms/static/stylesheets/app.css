@@ -203,6 +203,9 @@ div.panel h5 span.date {
 div.partner dl * {
   font-size: 16px;
 }
+div.partner a.partner_logo_link {
+	margin-bottom: 10px;
+}
 div.types {
   padding-top: 10px;
   border-top: solid 1px #e6e6e6;
