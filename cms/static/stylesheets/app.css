@@ -1,17 +1,3 @@
-/* Artfully masterminded by ZURB  */
-
-/* -------------------------------------------------- 
-   Table of Contents
------------------------------------------------------
-:: Shared Styles
-:: Page Name 1
-:: Page Name 2
-*/
-
-
-/* -----------------------------------------
-   Shared Styles
------------------------------------------ */
 [class*="social foundicon-"]:before {
   font-family: "SocialFoundicons";
 }
@@ -171,7 +157,7 @@ div#page {
   -moz-box-shadow: 2px 2px 1px rgba(51,51,51,0.5);
   -webkit-box-shadow: 2px 2px 1px rgba(51,51,51,0.5);
   box-shadow: 2px 2px 1px rgba(51,51,51,0.5);
-  padding: 20px 0 0 0;
+  padding: 20px 0 20px 0;
 }
 
 div.panel {
@@ -276,6 +262,9 @@ padding: 10px;
 }
 span.label.success {
   background-color: #66cc33;
+}
+a#readMore {
+	margin-bottom: 10px;
 }
 
 
