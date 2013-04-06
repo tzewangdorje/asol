@@ -8,7 +8,7 @@ def _getModels(title=None):
         if title:
             article = Article.objects.select_related().get(title_url=title)
         else:
-            article = Article.objects.select_related().exclude(article_type="link").latest(field_name="date_published")
+            article = Article.objects.select_related().exclude(article_type="link").exclude(story=0).latest(field_name="date_published")
     except Article.DoesNotExist:
         raise Http404("Nope, I'm sorry, but I couldn't find that page.")
     partners = Partner.objects.select_related().all().order_by('?')
@@ -28,43 +28,42 @@ def _getModels(title=None):
         pass # error, raise exception?
     return article, partners, recentStories, photoStories, template
 
-def _getFromTo(page):
+def _getFromTo(page, recentStories):
     page = int(page)
-    return 3*page, 3*(page+1)
+    fromPage = 3*page
+    toPage = 3*(page+1)
+    if len(recentStories[fromPage:toPage])<3:
+        nextPage = None
+    else:
+        nextPage = page + 1
+    pageBack = page - 1
+    return fromPage, toPage, nextPage, pageBack
     
 def home(request):
     article, partners, recentStories, photoStories, template = _getModels()
-    page = 0
-    pageFrom, pageTo = _getFromTo(page)
-    if len(recentStories)<3:
-        page = None
-    else:
-        page = page+1
+    pageFrom, pageTo, page, pageBack = _getFromTo(page=0, recentStories=recentStories)
     context = RequestContext(request, {
         'partners': partners,
         'article': article,
         'recentStories': recentStories[pageFrom:pageTo],
         'photoStories': photoStories,
         'gallery': "False",
-        'page': page
+        'page': page,
+        'pageBack': pageBack
     })
     return HttpResponse(template.render(context))
 
 def article(request, title):
     article, partners, recentStories, photoStories, template = _getModels(title)
-    page = 0
-    pageFrom, pageTo = _getFromTo(page)
-    if len(recentStories)<3:
-        page = None
-    else:
-        page = page+1
+    pageFrom, pageTo, page, pageBack = _getFromTo(page=0, recentStories=recentStories)
     context = RequestContext(request, {
         'partners': partners,
         'article': article,
         'recentStories': recentStories[pageFrom:pageTo],
         'photoStories': photoStories,
         'gallery': "False",
-        'page': page
+        'page': page,
+        'pageBack': pageBack
     })
     return HttpResponse(template.render(context))
 
@@ -92,19 +91,15 @@ def gallery(request):
     return HttpResponse(template.render(context))
 
 def ajaxLoadStories(request, title_url, page):
-    pageFrom, pageTo = _getFromTo(page)
-    page = int(page)
     template = loader.get_template('cms/ajaxLoadStories.html')
     recentStories = list(Article.objects.select_related().
                          exclude(title=title_url).
                          exclude(story=0).order_by('-date_published'))
-    if len(recentStories)<3:
-        page = None
-    else:
-        page = page+1
+    pageFrom, pageTo, page, pageBack = _getFromTo(page=int(page), recentStories=recentStories)
     context = RequestContext(request, {
       'recentStories': recentStories[pageFrom:pageTo],
       'page': page,
+      'pageBack': pageBack,
       'title_url': title_url
     })
     return HttpResponse(template.render(context))

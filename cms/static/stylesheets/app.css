@@ -41,7 +41,10 @@ body {
 }
 p {
   text-align: justify;
-  font-size: 12px;
+  font-size: 14px;
+}
+p strong {
+	color: #2ba6cb;
 }
 div#main p {
   font-size: 14px;  
@@ -63,7 +66,7 @@ h3 {
   color: white;
   padding: 5px;
 }
-div#main h3 {
+div#col-left h3 {
   margin-top: 0px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -163,6 +166,7 @@ div#page {
 div.panel {
   background: none;
   border: solid 1px #E6E6E6;
+  margin-bottom: 10px !important;
 }
 div.panel div.content img {
   margin-right: 10px;
@@ -194,7 +198,6 @@ div.partner a.partner_logo_link {
 }
 div.types {
   padding-top: 10px;
-  border-top: solid 1px #e6e6e6;
   clear: both;
 }
 div.types * {
@@ -230,8 +233,8 @@ div.partner .tabs.vertical dd {
 div.youtube iframe {
   padding-bottom: 10px;
 }
-div#signup h5#calltoaction {
-  color: white;
+div#signup h5.calltoaction, div.checkusout h5.calltoaction {
+  color: white
   padding: 0;
   margin: 0;
 }
@@ -247,15 +250,43 @@ div.panel.section {
 	border: none !important;
 }
 div.panel.section h4 {
-  color: white;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
--ms-border-radius: 3px;
--o-border-radius: 3px;
-border-radius: 3px;
-background-color: #555555;
-width: 100%;
-padding: 10px;
+	  color: white;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #555555;
+	width: 100%;
+	padding: 10px;
+}
+div.panel hr {
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
+}
+.panel.callout {
+	background: #66cc33;
+	border-color: #66cc33;
+	padding: 10px;
+}
+.panel.callout .collapse .four {
+	position: relative;
+}
+.panel.callout .collapse .four a {
+	display: block;
+	width: 90%;
+	height: 90%;
+}
+.panel.callout .collapse .four a:hover {
+	color: white;
+	background-color: #EE3C96;
+}
+.panel.callout h5.calltoaction {
+	background: #66cc33;
+	border-color: #66cc33;	
+}
+.panel.callout .button {
+	color: #EE3C96;
 }
 .label {
     white-space: normal;
@@ -264,6 +295,10 @@ span.label.success {
   background-color: #66cc33;
 }
 a#readMore {
+	margin-bottom: 10px;
+}
+a#readBack {
+	margin-right: 10px;
 	margin-bottom: 10px;
 }
 

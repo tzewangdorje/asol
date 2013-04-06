@@ -49,6 +49,7 @@
 	      <ul class="dropdown">
 	      	<li><a href="/">Home</a></li>
 	      	<li><a href="/gallery">Our Gallery</a></li>
+	      	<li><a href="/content/twitter-timeline">@adursol Twitter Timeline</a></li>
 		    <li><label>ABOUT</label></li>
 		    <li><a href="/content/what-is-the-adur-sea-of-lights">So what is the Adur Sea of Lights?</a></li>
 		    <li><a href="/content/the-light-upon-the-sea">&quot;The Light Upon the Sea&quot;</a></li>
@@ -72,7 +73,7 @@
 	      <a href="#">Our Partners</a>
 	      <ul class="dropdown">
 	      {% for partner in partners %}
-	      	<li><a href="/content/{{ partner.name|slugify }}">{{ partner.name }}</a></li>
+	      	<li><a href="{{ partner.info_url }}">{{ partner.name }}</a></li>
 	      {% endfor %}
 	      </ul>
 	    </li>
@@ -107,12 +108,35 @@
 	  
 	    <!-- Left column -->
 	    <div id="col-left" class="four columns">
-        	{% block col-left %}{% endblock %}
+        	{% block main %}{% endblock %}
+        	<hr/>
+        	<div class="checkusout panel callout radius">
+ 				<div class="row collapse">
+ 					<div class="eight columns">
+						<h5 class="calltoaction">Sea of Lights is a Facebook page too!</h5>
+					</div>
+	      			<div class="four columns">
+	      				<a target="_blank" href="https://www.facebook.com/theseaoflights" class="medium button round success">Facebook</a>
+	      			</div>
+	      		</div>
+	      	</div>
+	      	{% if article.title_url != "twitter-timeline" %}
+		       	<div class="checkusout panel callout radius">
+						<div class="row collapse">
+							<div class="eight columns">
+								<h5 class="calltoaction">Check out our Twitter account - we follow back!</h5>
+							</div>
+		      			<div class="four columns">
+		      				<a target="_blank" href="https://twitter.com/adursol" class="medium button round success">Twitter</a>
+		      			</div>
+		      		</div>
+		      	</div>
+			{% endif %}    	
 	    </div>
 	    
 	    <!-- Middle column -->
 	    <div id="main" class="four columns">
-	        {% block main %}{% endblock %}
+	        {% block col-left %}{% endblock %}
 	    </div>
 	    
 	    <!-- Right column -->
@@ -120,10 +144,10 @@
 	      <div id="signup" class="panel callout radius">
 	      <div class="row collapse">
 	      	<div class="eight columns">
-	      		<h5 id="calltoaction">Want to get involved?<br/>Then join our forum!</h5>
+	      		<h5 class="calltoaction">Want to get involved?<br/>Then join our forum!</h5>
 	      	</div>
 	      	<div class="four columns">
-	      		<a href="http://forum.seaoflights.co.uk" class="medium button round success">JOIN US</a>
+	      		<a href="http://forum.seaoflights.co.uk" class="medium button round success">Sign Up</a>
 	      	</div>
 	      </div>
 	      </div>
@@ -154,16 +178,16 @@
     $(window).load(function(){
       $("#gallery").orbit({ 
       	fluid: '5x9', 
-      	'advanceSpeed': 4000, 
+      	'advanceSpeed': 5000, 
       	'pauseOnHover': false, 
       	'afterSlideChange': function() {
       		
       	},
       });
-		$("div#page").on("click", "#readMore", function(e){
+		$("div#page").on("click", ".read", function(e){
 			e.preventDefault();
 			url = $(this).attr('href');
-			$("div#col-left").load(url);
+			$("div#main").load(url);
 		});
     });
     </script>

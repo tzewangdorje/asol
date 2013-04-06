@@ -25,6 +25,7 @@
       		{% endif %}
       		<p>{{ story.summary }}</p>
       		<div class="types">
+      		<hr/>
       		<a {% if story.article_type == "link" %}target="_blank" {% endif %}href="{{ story|makeUrl }}">
 				{% if story.article_type == "text" %}
 				    <i class="gen-enclosed foundicon-page"></i><span class="radius secondary label">Full article</span>
@@ -40,8 +41,12 @@
     	</div>
       </div>
 	{% endfor %}
+
 	{% if page != None %}
-		<a id="readMore" href="/ajaxLoadStories/{{ article.title_url }}/{{ page }}" class="right small button radius">Load more stories</a>
+		<a id="readMore" href="/ajaxLoadStories/{{ article.title_url }}/{{ page }}" class="read right small button radius success">Load more stories</a>
+	{% endif %}
+	{% if pageBack >= 0 %}
+		<a id="readBack" href="/ajaxLoadStories/{{ article.title_url }}/{{ pageBack }}" class="read right small button radius success">Go back</a>
 	{% endif %}
    
 {% endblock col-left %}
@@ -50,12 +55,12 @@
 	
 {% block col-right %}
 	<div class="panel section"><h4>Our Partners</span></h4></div>
-	{% for partner in partners|slice:":3" %}
+	{% for partner in partners|slice:":4" %}
 	<div class="partner panel radius">
 	  <h5><span class="title radius label">{{ partner.name }}</span></h5>
 	  <div class="row">
 	    <div class="seven columns">
-	      <a class="partner_logo_link" href="#" class="th"><img src="{{ STATIC_URL }}images/partners/{{ partner.logo_url }}" /></a>
+	      <a class="partner_logo_link" href="{{ partner.info_url }}" class="th"><img src="{{ STATIC_URL }}images/partners/{{ partner.logo_url }}" /></a>
 	    </div>		
 	    <div class="five columns">
 	      <dl class="vertical tabs">

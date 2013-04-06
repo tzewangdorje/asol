@@ -22,6 +22,7 @@
       		{% endif %}
       		<p>{{ story.summary }}</p>
       		<div class="types">
+      		<hr/>
       		<a {% if story.article_type == "link" %}target="_blank" {% endif %}href="{{ story|makeUrl }}">
 				{% if story.article_type == "text" %}
 				    <i class="gen-enclosed foundicon-page"></i><span class="radius secondary label">Full article</span>
@@ -38,5 +39,8 @@
       </div>
 	{% endfor %}
 	{% if page != None %}
-		<a id="readMore" href="/ajaxLoadStories/{{ title_url }}/{{ page }}" class="right small button radius">Load more stories</a>
+		<a id="readMore" href="/ajaxLoadStories/{{ title_url }}/{{ page }}" class="read right small button radius success">Load more stories</a>
+	{% endif %}
+	{% if pageBack >= 0 %}
+		<a id="readBack" href="/ajaxLoadStories/{{ title_url }}/{{ pageBack }}" class="read right small button radius success">Go back</a>
 	{% endif %}
