@@ -22,10 +22,11 @@
 /* extra styles to handle very narrow screen */
 @media screen and (max-device-width: 500px) {
     div#sea-background {
-        margin: 0 0 0 -65px;
+	width: auto !important;
+        margin: 0 0 0 -65px !important;
     }
     div#row-bottom-wrap, div#row-split-wrap, div#row-split, div#row-top-wrap {
-        background-image: none;
+        background-image: none !important;
     }
     div#row-bottom {
         padding: 0px 40px 0px 80px !important;
