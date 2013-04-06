@@ -57,7 +57,7 @@
 	<div class="panel section"><h4>Our Partners</span></h4></div>
 	{% for partner in partners|slice:":4" %}
 	<div class="partner panel radius">
-	  <h5><span class="title radius label">{{ partner.name }}</span></h5>
+	  <a href="{{ partner.info_url }}"><h5><span class="title radius label">{{ partner.name }}</span></h5></a>
 	  <div class="row">
 	    <div class="seven columns">
 	      <a class="partner_logo_link" href="{{ partner.info_url }}" class="th"><img src="{{ STATIC_URL }}images/partners/{{ partner.logo_url }}" /></a>
@@ -70,9 +70,11 @@
 	        </dd>
 	        {% for media in partner.medias.all %}
 	          <dd>
-	            <i class="gen-enclosed foundicon-idea"></i>
+	            <i class="{{ media.media_type|icon }}"></i>
 	            {% if media.media_type == "phone" %}
 	            	<a href="tel:{{ media.link|tel }}"><span class="radius secondary label">{{ media.media_type|title }}</span></a>
+	            {% elif media.media_type == "email" %}
+	            	<a href="mailto:{{ media.link }}"><span class="radius secondary label">{{ media.media_type|title }}</span></a>
 	            {% else %}
 	            	<a target="_blank" href="{{ media.link }}"><span class="radius secondary label">{{ media.media_type|title }}</span></a>
 	            {% endif %}
