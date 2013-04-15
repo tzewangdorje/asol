@@ -21,7 +21,7 @@
 	        		<iframe width="290" height="163" src="{{ story.articleyoutube.video_url }}" frameborder="0" allowfullscreen></iframe>
 	    		</div>
     		{% else %}
-	      		<a {% if story.article_type == "link" %}target="_blank" {% endif %}href="{{ story|makeUrl }}" class="th"><img class="left" src="{{ STATIC_URL }}images/content/{{ story.image_thumb_url }}" /></a>
+	      		<a {% if story.article_type == "link" %}target="_blank" {% endif %}href="{{ story|makeUrl }}" class="th"><img class="left" src="{{ STATIC_URL }}images/{{ story.image_thumb_url }}" /></a>
       		{% endif %}
       		<p>{{ story.summary }}</p>
       		<div class="types">
@@ -60,7 +60,7 @@
 	  <a href="{{ partner.info_url }}"><h5><span class="title radius label">{{ partner.name }}</span></h5></a>
 	  <div class="row">
 	    <div class="seven columns">
-	      <a class="partner_logo_link" href="{{ partner.info_url }}" class="th"><img src="{{ STATIC_URL }}images/partners/{{ partner.logo_url }}" /></a>
+	      <a class="partner_logo_link" href="{{ partner.info_url }}" class="th"><img src="{{ STATIC_URL }}images/{{ partner.logo_url }}" /></a>
 	    </div>		
 	    <div class="five columns">
 	      <dl class="vertical tabs">
@@ -92,7 +92,7 @@
 		<div id="gallery-{{ photoStory.id }}" class="reveal-modal">
 		  <h2>{{ photoStory.title }}</h2>
 		  <p class="lead">{{ photoStory.summary }}</p>
-		  <img class="main" src="{{ STATIC_URL }}images/content/{{ photoStory.articlephoto.photo_url }}" alt="{{ photoStory.articlephoto.caption }}" />
+		  <img class="main" src="{{ STATIC_URL }}images/{{ photoStory.articlephoto.photo_url }}" alt="{{ photoStory.articlephoto.caption }}" />
 		  <a href="/gallery" class="medium success button radius">Go to the gallery</a>
 		  <a class="close-reveal-modal">&#215;</a>
 		</div>

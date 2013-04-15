@@ -5,7 +5,7 @@ class Partner(models.Model):
         return self.name
     name = models.CharField(max_length=64)
     info_url = models.CharField(max_length=128)
-    logo_url = models.CharField(max_length=64)
+    logo_url = models.ImageField(upload_to="partners")
     description = models.CharField(max_length=512)
 
 class Media(models.Model):
@@ -23,7 +23,7 @@ class Article(models.Model):
     date_published = models.DateTimeField()
     article_type =  models.CharField(max_length=16)
     summary =  models.CharField(max_length=256)
-    image_thumb_url =  models.CharField(max_length=128, null=True, blank=True)
+    image_thumb_url =  models.ImageField(upload_to="content",null=True, blank=True)
     story = models.BooleanField()
     
     def makeUrl(self):
@@ -34,7 +34,7 @@ class Article(models.Model):
 
 class ArticleText(Article):
     body = models.CharField(max_length=3000)
-    image_body_url = models.CharField(max_length=128, null=True, blank=True)
+    image_body_url = models.ImageField(upload_to="content",null=True, blank=True)
     image_alt_text = models.CharField(max_length=128, null=True, blank=True)
 
 class ArticleYoutube(Article):
@@ -46,6 +46,6 @@ class ArticleLink(Article):
     caption = models.CharField(max_length=64, null=True, blank=True)
 
 class ArticlePhoto(Article):
-    photo_url = models.CharField(max_length=128)
+    photo_url = models.ImageField(upload_to="content",null=True, blank=True)
     caption = models.CharField(max_length=128, null=True, blank=True)
 

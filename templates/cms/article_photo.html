@@ -13,7 +13,7 @@
 			<span class='st_pinterest_large' displayText='Pinterest'></span>
 			<span class='st_fblike_large' displayText='Facebook Like'></span>
 			<a href="#" data-reveal-id="gallery-{{ photoStory.id }}">
-				<img class="main" src="{{ STATIC_URL }}images/content/{{ photoStory.articlephoto.photo_url }}" alt="{{ photoStory.articlephoto.caption }}" />
+				<img class="main" src="{{ STATIC_URL }}images/{{ photoStory.articlephoto.photo_url }}" alt="{{ photoStory.articlephoto.caption }}" />
 			</a>
 			<h4 class="subheader">{{ photoStory.summary }}</h4>
 		</div>

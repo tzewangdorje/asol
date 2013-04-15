@@ -18,7 +18,7 @@
 	        		<iframe width="290" height="163" src="{{ story.articleyoutube.video_url }}" frameborder="0" allowfullscreen></iframe>
 	    		</div>
     		{% else %}
-	      		<a {% if story.article_type == "link" %}target="_blank" {% endif %}href="{{ story|makeUrl }}" class="th"><img class="left" src="{{ STATIC_URL }}images/content/{{ story.image_thumb_url }}" /></a>
+	      		<a {% if story.article_type == "link" %}target="_blank" {% endif %}href="{{ story|makeUrl }}" class="th"><img class="left" src="{{ STATIC_URL }}images/{{ story.image_thumb_url }}" /></a>
       		{% endif %}
       		<p>{{ story.summary }}</p>
       		<div class="types">

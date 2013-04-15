@@ -8,7 +8,7 @@
 	</div>
 	{% for photo in colTwo %}
 		<a href="#" data-reveal-id="gallery-{{ photo.id }}">
-			<img class="main" src="{{ STATIC_URL }}images/content/{{ photo.articlephoto.photo_url }}" alt="{{ photo.articlephoto.caption }}" />
+			<img class="main" src="{{ STATIC_URL }}images/{{ photo.articlephoto.photo_url }}" alt="{{ photo.articlephoto.caption }}" />
 		</a>
 	{% endfor %}
 {% endblock %}
@@ -16,7 +16,7 @@
 {% block col-left %}
 	{% for photo in colOne %}
 		<a href="#" data-reveal-id="gallery-{{ photo.id }}">
-			<img class="main" src="{{ STATIC_URL }}images/content/{{ photo.articlephoto.photo_url }}" alt="{{ photo.articlephoto.caption }}" />
+			<img class="main" src="{{ STATIC_URL }}images/{{ photo.articlephoto.photo_url }}" alt="{{ photo.articlephoto.caption }}" />
 		</a>
 	{% endfor %}
 {% endblock col-left %}
@@ -24,7 +24,7 @@
 {% block col-right %}
 	{% for photo in colThree %}
 		<a href="#" data-reveal-id="gallery-{{ photo.id }}">
-			<img class="main" src="{{ STATIC_URL }}images/content/{{ photo.articlephoto.photo_url }}" alt="{{ photo.articlephoto.caption }}" />
+			<img class="main" src="{{ STATIC_URL }}images/{{ photo.articlephoto.photo_url }}" alt="{{ photo.articlephoto.caption }}" />
 		</a>
 	{% endfor %}
 {% endblock %}
@@ -34,7 +34,7 @@
 		<div id="gallery-{{ photoStory.id }}" class="reveal-modal">
 		  <h2>{{ photoStory.title }}</h2>
 		  <p class="lead">{{ photoStory.summary }}</p>
-		  <img class="main" src="{{ STATIC_URL }}images/content/{{ photoStory.articlephoto.photo_url }}" alt="{{ photoStory.articlephoto.caption }}" />
+		  <img class="main" src="{{ STATIC_URL }}images/{{ photoStory.articlephoto.photo_url }}" alt="{{ photoStory.articlephoto.caption }}" />
 		  <a class="close-reveal-modal">&#215;</a>
 		</div>
 	{% endfor %}
